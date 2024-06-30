@@ -1,0 +1,26 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AssetScooper
+    network: base
+    source:
+      address: "0x699Dc58648371EDB907b1FCfbf69EDadC335F353"
+      abi: AssetScooper
+      startBlock: 16485838
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TokenSwapped
+      abis:
+        - name: AssetScooper
+          file: ./abis/AssetScooper.json
+      eventHandlers:
+        - event: TokenSwapped(indexed address,indexed address,uint256,uint256)
+          handler: handleTokenSwapped
+      file: ./src/asset-scooper.ts
