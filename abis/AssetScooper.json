@@ -1,24 +1,35 @@
 [
-  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
-  { "inputs": [], "name": "AssetScooper_PairDoesNotExist", "type": "error" },
-  { "inputs": [], "name": "AssetScooper__AddressZero", "type": "error" },
   {
-    "inputs": [],
-    "name": "AssetScooper__InsufficientBalance",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "AssetScooper__InsufficientLiquidity",
-    "type": "error"
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_weth",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_uniswapRouter",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
   },
   {
     "inputs": [],
     "name": "AssetScooper__InsufficientOutputAmount",
     "type": "error"
   },
-  { "inputs": [], "name": "AssetScooper__MisMatchLength", "type": "error" },
-  { "inputs": [], "name": "AssetScooper__MisMatchToken", "type": "error" },
+  {
+    "inputs": [],
+    "name": "AssetScooper__InsufficientUserBalance",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AssetScooper__MisMatchLength",
+    "type": "error"
+  },
   {
     "inputs": [],
     "name": "AssetScooper__UnsuccessfulBalanceCall",
@@ -29,10 +40,21 @@
     "name": "AssetScooper__UnsuccessfulDecimalCall",
     "type": "error"
   },
-  { "inputs": [], "name": "AssetScooper__UnsuccessfulSwapTx", "type": "error" },
-  { "inputs": [], "name": "AssetScooper__UnsupportedToken", "type": "error" },
-  { "inputs": [], "name": "AssetScooper__ZeroLengthArray", "type": "error" },
-  { "inputs": [], "name": "Reentrancy", "type": "error" },
+  {
+    "inputs": [],
+    "name": "AssetScooper__ZeroAddressToken",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AssetScooper__ZeroLengthArray",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ReentrancyGuardReentrantCall",
+    "type": "error"
+  },
   {
     "anonymous": false,
     "inputs": [
@@ -45,7 +67,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "tokenIn",
+        "name": "tokenA",
         "type": "address"
       },
       {
@@ -55,7 +77,7 @@
         "type": "uint256"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "amountOut",
         "type": "uint256"
@@ -67,7 +89,13 @@
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -75,7 +103,7 @@
     "inputs": [
       {
         "internalType": "address[]",
-        "name": "tokenAddress",
+        "name": "tokenAddresses",
         "type": "address[]"
       },
       {
@@ -92,8 +120,18 @@
   {
     "inputs": [],
     "name": "version",
-    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
     "stateMutability": "pure",
     "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
   }
 ]
